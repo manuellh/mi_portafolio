@@ -1,0 +1,42 @@
+.card-body{
+padding-left: 1px;
+}
+
+.container-progress-bar {
+  display: grid;
+  grid-template-columns: repeat(1, 160px);
+  padding-top: 20px;
+  padding-left: 2px;
+  padding-right:  1px;
+  padding-bottom: 20px;
+}
+.container-progress-bar .box {
+  width: 100%;
+}
+
+.container-progress-bar .box h2 {
+  display: block;
+  text-align: center;
+}
+
+.container-progress-bar .box .chart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 55px;
+  line-height: 215px;
+  height: 160px;
+}
+
+.container-progress-bar .box canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  width: 100%;
+}
+
+.html5-color{
+  color: #dd4b25;
+}
