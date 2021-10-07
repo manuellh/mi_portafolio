@@ -1,14 +1,76 @@
 @extends('layouts.template')
+<!-------------------------------------------------------->
+<!--Seccion Perfil-->
+<!-------------------------------------------------------->
+@section('foto')
+    @foreach ($misdatos as $midato)
+        <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{{ $midato->img }}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">{{ $midato->nombre }}</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">{{ $midato->estudios }}</p>
+        </div>
 
+    @endforeach
+@endsection
+
+<!-------------------------------------------------------->
 <!--Seccion de about-->
+<!-------------------------------------------------------->
 @section('about')
         @foreach($misdatos as $midato)
-            <div class="col-lg-4 ms-auto"><p class="lead text-secondary" style=”text-align: justify;”>{{ $midato->descripcion }}</p></div>
-            <div class="col-lg-4 me-auto"><p class="lead text-secondary">lml</p></div>
+            <div class="col-sm-12 ms-auto"><p class="lead text-secondary" style=”text-align: justify;”>{{ $midato->descripcion }}</p></div>
         @endforeach
 @endsection
 
+<!-------------------------------------------------------->
+<!--Seccion de CV-->
+<!-------------------------------------------------------->
+@section('cv')
+<button type="button" class="btn btn-xl btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#CVmodal">
+  <i class="fas fa-download me-2"></i>
+  Descargar CV
+</button>
+
+<!-- Portfolio Modal 1-->
+<div class="portfolio-modal modal fade" id="CVmodal" tabindex="-1" aria-labelledby="CVmodal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title-->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Descargar CV</h2>
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <div class="row">
+                            <iframe src="https://drive.google.com/file/d/1w2LlS9u0Sl9Nf65zViRD11yucL7A2BQC/preview" width="1000" height="480" allow="autoplay"></iframe>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+<!-------------------------------------------------------->
 <!--Seccion de habilidades-->
+<!-------------------------------------------------------->
 @section('habilidades')
   @foreach($habilidades as $habilidad)
   <div class="col-sm-12 col-md-6 col-lg-4">
@@ -23,7 +85,9 @@
   @endforeach
 @endsection
 
+<!-------------------------------------------------------->
 <!--Seccion de Experiencia-->
+<!-------------------------------------------------------->
 @section('time-line')
   @foreach( $experiencia as $experiencia )
 
@@ -34,11 +98,13 @@
         <p class="text-secondary text-uppercase">{{ $experiencia->descripcion }}</p>
       </div>
     </li>
-  
+
   @endforeach
 @endsection
 
+<!-------------------------------------------------------->
 <!--Seccion de Portafolio-->
+<!-------------------------------------------------------->
 @section('portafolio')
   @foreach ($proyectos as $proyecto)
 
@@ -68,12 +134,18 @@
                                   <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                   <div class="divider-custom-line"></div>
                               </div>
-                              <!-- Portfolio Modal - Image-->
-                              <img class="img-fluid rounded mb-5" src="{{ $proyecto->imagen }}" alt="..." />
-                              <!-- Portfolio Modal - Text-->
-                              <p class="mb-4">{{ $proyecto->descripcion }}</p>
-                              <a href="{{ $proyecto->git }}" class="btn btn-primary">git </a>
-                              <a href="{{ $proyecto->url }}" class="btn btn-primary">URL</a>
+                              <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                  <!-- Portfolio Modal - Image-->
+                                  <img class="img-fluid rounded mb-5" src="{{ $proyecto->imagen }}" alt="..." />
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                  <!-- Portfolio Modal - Text-->
+                                  <p class="mb-4 text-uppercase text-secondary">{{ $proyecto->descripcion }}</p>
+                                  <a href="{{ $proyecto->git }}" class="btn btn-primary text-uppercase">GIT</a>
+                                  <a href="{{ $proyecto->url }}" class="btn btn-primary text-uppercase">URL</a>
+                                </div>
+                              </div>
                           </div>
                       </div>
                   </div>
@@ -81,26 +153,14 @@
           </div>
       </div>
   </div>
-
   @endforeach
 @endsection
 
-@section('foto')
-    @foreach ($misdatos as $midato)
-        <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="{{ $midato->img }}" alt="..." />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">{{ $midato->nombre }}</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">{{ $midato->estudios }}</p>
-        </div>
-
-    @endforeach
+<!-------------------------------------------------------->
+<!--Seccion de contacto-->
+<!-------------------------------------------------------->
+@section('contacto')
+  @foreach($misdatos as $midato)
+    <h2 class="page-section-heading text-center text-lowercase text-secondary mb-0"><i class="far fa-envelope"></i>{{ $midato->email }}</h2>
+  @endforeach
 @endsection
